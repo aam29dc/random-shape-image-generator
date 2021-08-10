@@ -1,4 +1,4 @@
 # random-shape-image-generator
-generate random shapes (quads, triangles, ellipses) and colors in an image
+generate random shapes (quads, triangles, ellipses, trapezoids) and colors in an image
 
-![canvas](https://user-images.githubusercontent.com/73267302/128816519-5573faa3-c389-4931-82b0-077c6efd2dbe.png)
+![canvas](https://user-images.githubusercontent.com/73267302/128827327-4b8d23b6-51a1-434a-8c90-b4b2aa8b94f1.png)
