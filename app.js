@@ -112,9 +112,46 @@ function drawEllipse(){
     context.restore();
 }
 
+function drawTrap(){
+    context.save();
+
+    context.translate(Math.random() * canvas.width, Math.random() * canvas.height);
+
+    context.globalAlpha = Math.random();
+    context.lineWidth = Math.ceil(Math.random() * 2);
+
+    context.beginPath();
+
+    let radius = [(Math.random() * (canvas.width/2))];
+    let angle = Math.random() * (Math.PI * 2);
+    let height = [0];
+
+    //generate first of parallel lines
+    context.moveTo(0, height[0]);
+    context.lineTo(Math.cos(angle)*radius[0], Math.sin(angle)*radius[0]);
+
+    radius.push(Math.random() * (canvas.width/2));
+    height.push(Math.random() * (canvas.height/3));
+
+    //connect parallel lines before drawing the second parallel line
+    context.moveTo(0, height[0]);
+    context.lineTo(0, height[1]);
+
+    context.moveTo(0, height[1]);
+    context.lineTo(Math.cos(angle)*radius[1], Math.sin(angle)*radius[1] + height[1]);
+
+    //connect corresponding sides of parallel lines to form trapezoid
+    context.moveTo(Math.cos(angle)*radius[0], Math.sin(angle)*radius[0]);
+    context.lineTo(Math.cos(angle)*radius[1], Math.sin(angle)*radius[1] + height[1]);
+
+    context.stroke();
+
+    context.restore();
+}
+
 function drawShapes(){
-    let shapes = [drawRect, drawTri, drawEllipse];
-    shapes[Math.floor(Math.random() * 3)]();
+    let shapes = [drawRect, drawTri, drawEllipse, drawTrap];
+    shapes[Math.floor(Math.random() * 4)]();
 }
 
 setInterval(drawShapes, 50);
