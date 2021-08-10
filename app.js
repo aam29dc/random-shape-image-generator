@@ -149,9 +149,18 @@ function drawTrap(){
     context.restore();
 }
 
+function randOperation(){
+    let arr = ['source-over', 'destination-over', 'lighter', 'xor', 'multiply', 'screen', 'overlay', 'darken', 'lighten', 'color-dodge',
+    'color-burn', 'hard-light', 'soft-light', 'difference', 'exclusion', 'hue', 'saturation', 'color', 'luminosity'];
+
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
 function drawShapes(){
     let shapes = [drawRect, drawTri, drawEllipse, drawTrap];
-    shapes[Math.floor(Math.random() * 4)]();
+    context.globalCompositeOperation=randOperation();
+    shapes[Math.floor(Math.random() * shapes.length)]();
+    console.log(context.globalCompositeOperation);
 }
 
 setInterval(drawShapes, 50);
