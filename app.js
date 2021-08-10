@@ -113,9 +113,8 @@ function drawEllipse(){
 }
 
 function drawShapes(){
-    drawRect();
-    drawTri();
-    drawEllipse();
+    let shapes = [drawRect, drawTri, drawEllipse];
+    shapes[Math.floor(Math.random() * 3)]();
 }
 
 setInterval(drawShapes, 50);
